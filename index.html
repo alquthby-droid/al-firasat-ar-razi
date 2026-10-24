@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al-Firasat AI - Fisiognomi Karakter Imam Ar-Razi</title>
+    <meta name="description" content="Aplikasi analisis karakter berdasarkan ciri-ciri fisik dan pemindaian wajah real-time berbasis Kitab Al-Firasat karya Imam Fakhruddin Ar-Razi lengkap dengan basis data histori dan panduan interpretasi." />
+    <meta property="og:title" content="Al-Firasat AI - Fisiognomi Karakter Imam Ar-Razi" />
+    <meta property="og:description" content="Aplikasi analisis karakter berdasarkan ciri-ciri fisik dan pemindaian wajah real-time berbasis Kitab Al-Firasat karya Imam Fakhruddin Ar-Razi lengkap dengan basis data histori dan panduan interpretasi." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // Suppress benign Vite dev WebSocket / HMR connection drops in iframe/Cloud Run environments
+      (function() {
+        function isViteWs(str) {
+          if (!str) return false;
+          var s = String(str);
+          return s.indexOf('WebSocket') !== -1 || 
+                 s.indexOf('websocket') !== -1 || 
+                 s.indexOf('@vite/client') !== -1 || 
+                 s.indexOf('[vite]') !== -1 ||
+                 s.indexOf('vite-hmr') !== -1 ||
+                 s.indexOf('ditutup tanpa dibuka') !== -1 ||
+                 s.indexOf('closed without being opened') !== -1;
+        }
+
+        var origError = console.error;
+        console.error = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isViteWs(arguments[i])) return;
+          }
+          return origError.apply(console, arguments);
+        };
+
+        var origWarn = console.warn;
+        console.warn = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isViteWs(arguments[i])) return;
+          }
+          return origWarn.apply(console, arguments);
+        };
+
+        var origLog = console.log;
+        console.log = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isViteWs(arguments[i])) return;
+          }
+          return origLog.apply(console, arguments);
+        };
+
+        window.addEventListener('unhandledrejection', function(event) {
+          var reason = event && (event.reason || event);
+          var msg = (reason && (reason.message || reason.stack || String(reason))) || '';
+          if (isViteWs(msg)) {
+            event.preventDefault();
+            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+          }
+        }, true);
+
+        window.addEventListener('error', function(event) {
+          var msg = ((event.message || '') + ' ' + (event.filename || '') + ' ' + (event.error ? String(event.error) : ''));
+          if (isViteWs(msg)) {
+            event.preventDefault();
+            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+          }
+        }, true);
+
+        // Gracefully handle WebSocket for vite-hmr in cloud sandboxes where WS is disabled
+        var NativeWebSocket = window.WebSocket;
+        if (NativeWebSocket) {
+          var PatchedWebSocket = function(url, protocols) {
+            var isHmr = (typeof protocols === 'string' && protocols.indexOf('vite') !== -1) ||
+                        (Array.isArray(protocols) && protocols.some(function(p) { return typeof p === 'string' && p.indexOf('vite') !== -1; })) ||
+                        (typeof url === 'string' && (url.indexOf('@vite') !== -1 || url.indexOf('vite-hmr') !== -1));
+
+            var ws;
+            try {
+              ws = new NativeWebSocket(url, protocols);
+            } catch (err) {
+              var dummy = new EventTarget();
+              dummy.close = function() {};
+              dummy.send = function() {};
+              dummy.readyState = 3;
+              return dummy;
+            }
+
+            if (isHmr && ws) {
+              ws.addEventListener('error', function(e) {
+                if (e && e.stopImmediatePropagation) e.stopImmediatePropagation();
+                if (e && e.preventDefault) e.preventDefault();
+              });
+              ws.addEventListener('close', function(e) {
+                if (e && e.stopImmediatePropagation) e.stopImmediatePropagation();
+                if (e && e.preventDefault) e.preventDefault();
+              });
+            }
+            return ws;
+          };
+          PatchedWebSocket.prototype = NativeWebSocket.prototype;
+          PatchedWebSocket.CONNECTING = NativeWebSocket.CONNECTING;
+          PatchedWebSocket.OPEN = NativeWebSocket.OPEN;
+          PatchedWebSocket.CLOSING = NativeWebSocket.CLOSING;
+          PatchedWebSocket.CLOSED = NativeWebSocket.CLOSED;
+          window.WebSocket = PatchedWebSocket;
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-stone-950 text-stone-100 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
